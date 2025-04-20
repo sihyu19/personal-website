@@ -1,18 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>hi, this is siyu</title>
-  
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html>
 
 <head>
   <title>Siyu's Portfolio</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
   <style>
     body {
       background-color: #FDFFFC;
@@ -120,7 +111,7 @@
       gap: 40px;
       max-width: 1400px;
       margin: 0 auto;
-      padding-top: 120px;
+      padding-top: 140px;
       position: relative;
       z-index: 1;
     }
@@ -131,7 +122,7 @@
 
     .name-title {
       position: absolute;
-      top: 27%;
+      top: 35%;
       right: 30px;
       text-align: right;
       z-index: 90;
@@ -181,7 +172,8 @@
       position: relative;
       overflow: hidden;
       padding-bottom: 100px;
-      padding-top: 100px;
+      padding-top: 0;
+      margin-top: 230px;
     }
 
     .my-work-image img {
@@ -217,11 +209,6 @@
       font-size: 1.5em;
       margin: 0 0 0 0;
       font-weight: bold;
-    }
-    
-    .p-d {
-      font-size: 0.9em;
-      line-height: 1;
     }
 
     .project-location {
@@ -351,6 +338,29 @@
         transform: translateX(-50%);
       }
     }
+    
+     .services-arrow-lottie {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55px;
+            height: 90px;
+            z-index: 100;
+        }
+
+        .services-hero-lottie {
+            position: absolute;
+            top: 50px;
+            right: 200px;
+            width: 500px;
+            height: 500px;
+            z-index: 10;
+        }
+
+        .services-arrow-lottie:hover {
+            opacity: 1;
+        }
   </style>
 </head>
 
@@ -363,6 +373,10 @@
 
   <div class="hero-section">
     <div class="background-blob"></div>
+    
+    <div class="services-hero-lottie" data-w-id="2e93df24-f29a-e4d7-3bc9-f6ccc8324606" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63b6fa2b52a5b1508ff0c52f_big%20purple%20stars2.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="3.3333333333333335" data-duration="0">
+    </div>
+    
     <div class="name-title header-container">
       <h1>Hi,<br>this is<br>Siyu :)</h1>
     </div>
@@ -383,7 +397,10 @@
       </div>
     </div>
   </div>
-
+  
+     <div class="services-arrow-lottie" data-w-id="2e93df24-f29a-e4d7-3bc9-f6ccc8324605" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63909085c2a607e8ca242ced_arrow%20purple.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2.033333333333333" data-duration="0">
+    </div>
+  
   <div class="my-work-image">
     <img src="https://i.postimg.cc/pL5C95Xx/web.png" alt="my work image">
   </div>
@@ -657,11 +674,55 @@
         toggleIndexPanel();
       }
     };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+            const heroLottieElement = document.querySelector('.services-hero-lottie');
+            const heroAnimation = lottie.loadAnimation({
+                container: heroLottieElement,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63b6fa2b52a5b1508ff0c52f_big%20purple%20stars2.json'
+            });
+
+            // Modify the color of stars to yellow after animation loads
+            heroAnimation.addEventListener('DOMLoaded', () => {
+                const svgElement = heroLottieElement.querySelector('svg');
+                if (svgElement) {
+                    const paths = svgElement.querySelectorAll('path');
+                    paths.forEach(path => {
+                        // Change stroke color to yellow
+                        path.setAttribute('stroke', '#f3a5a5');
+                        
+                        // If there's a fill color (like the star), change it to yellow
+                        if (path.getAttribute('fill')) {
+                            path.setAttribute('fill', '#f3a5a5');
+                        }
+                    });
+                }
+            });
+
+            const arrowElement = document.querySelector('.services-arrow-lottie');
+            const animation = lottie.loadAnimation({
+                container: arrowElement,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63909085c2a607e8ca242ced_arrow%20purple.json'
+            });
+
+            // Modify the color after animation loads
+            animation.addEventListener('DOMLoaded', () => {
+                const svgElement = arrowElement.querySelector('svg');
+                if (svgElement) {
+                    const paths = svgElement.querySelectorAll('path');
+                    paths.forEach(path => {
+                        path.setAttribute('stroke', '#f3a5a5');
+                    });
+                }
+            });
+        });   
   </script>
 </body>
 
-</html>
-<!-- partial -->
-  
-</body>
 </html>
