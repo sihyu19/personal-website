@@ -253,6 +253,20 @@
       margin-bottom: 16px;
       break-inside: avoid;
     }
+    
+    .project-images-grid video {
+      width: 260px;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+    
+    .single-project-image video {
+      width: 1080px;
+      height: auto;
+    }
 
     @media (max-width: 1200px) {
       .project-images-grid {
@@ -300,17 +314,14 @@
       padding: 0;
       cursor: pointer;
       position: relative;
-      text-decoration: none;
+      line-height: 0.7;
+      margin-left: 30px;
     }
 
     .index-panel h4 {
       font-family: arboria, sans-serif;
       color: #0C120C;
       margin-top: 20px;
-    }
-
-    .project-item h4 {
-      margin-left: 20px;
     }
 
     .project-item h4:hover {
@@ -394,7 +405,7 @@
       <div class="text-column">
         <p>I am a second year @UofM studying architecture and cognitive science.</p>
         <p>I design graphics, brands, and buildings. I love making cool stuff. Outside of studios, you will see me painting, making jewelry, or just making a creative mess wherever I can. </p>
-        <p>On campus, I am the co-director of <button class="link-button" onclick="openShiftCreator()">Shift Creator Space</button>, a community of thinkers, designers, and makers working on their passion projects. At the moment, I also design stuff for <button class="link-button" onclick="openATD()">Alpha Theta Delta</button>, make graphics for <button class="link-button" onclick="openRoots()">Roots</button>, and help tell stories for <button class="link-button" onclick="openCSS()">Center For Social Solutions</button>. </p>
+        <p>On campus, I am the co-director of <button class="link-button" onclick="openShiftCreator()">Shift Creator Space</button>, a community of hackers, designers, and artists to work on their passion projects. At the moment, I also design stuff for <button class="link-button" onclick="openATD()">Alpha Theta Delta</button>, make graphics for <button class="link-button" onclick="openRoots()">Roots</button>, and help tell stories for <button class="link-button" onclick="openCSS()">Center For Social Solutions</button>. </p>
         <p>Feel free to shoot me a note at siyuge@umich.edu. I'd love to hear what you're making.</p>
       </div>
     </div>
@@ -483,21 +494,6 @@
           <img src="https://i.postimg.cc/76DptWfc/me-n-bitch2.png" alt="Me N Bitch">
         </div>
       </div>
-      
-           <!-- Project 2 -->
-      <div id="misc painting" class="project-wrapper">
-        <div class="project-info">
-          <h3 class="project-title">Illustrations</h3>
-          <p class="project-location">Mixed Media, 2022-2025</p>
-          <p class="project-description">Misc Art I've made.</p>
-        </div>
-        <div class="project-images-grid">
-          <img src="https://i.postimg.cc/nh6LyF81/IMG-2778.jpg" alt="Self-portrait">
-          <img src="https://i.postimg.cc/8PYkvpCV/Wechat-IMG1379.jpg" alt="Fish">
-          <img src="https://i.postimg.cc/0QvyNVyM/Screenshot-2024-12-09-at-12-30-25-AM.png" alt="Long Fall">
-          <img src="https://i.imghippo.com/files/BpAT9949uA.png" alt="building">
-        </div>
-      </div>
 
             <!-- Project 7 -->
       <div id="bedroom" class="project-wrapper">
@@ -548,6 +544,34 @@
           <img src="https://i.postimg.cc/Jz3P2Lk0/Screenshot-2024-12-09-at-12-37-52-AM.png" alt="Twist2">
         </div>
       </div>
+      
+                  <!-- Project 8 -->
+      <div id="blender" class="project-wrapper">
+        <div class="project-info">
+          <h3 class="project-title">Blender</h3>
+          <p class="project-location">Blender, 2025</p>
+          <p class="project-description">I am teaching myself blender at the moment. Check back later to see more progress...hopefully.</p>
+        </div>
+          <div class="single-project-image">
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1082703579?h=5c5ee21d1d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="donut"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
+      </div>
+      
+                 <!-- Project 2 -->
+      <div id="misc painting" class="project-wrapper">
+        <div class="project-info">
+          <h3 class="project-title">Illustrations</h3>
+          <p class="project-location">Mixed Media, 2022-2025</p>
+          <p class="project-description">Misc Art I've made.</p>
+        </div>
+        <div class="project-images-grid">
+          <img src="https://i.postimg.cc/nh6LyF81/IMG-2778.jpg" alt="Self-portrait">
+          <img src="https://i.postimg.cc/8PYkvpCV/Wechat-IMG1379.jpg" alt="Fish">
+          <img src="https://i.postimg.cc/0QvyNVyM/Screenshot-2024-12-09-at-12-30-25-AM.png" alt="Long Fall">
+          <img src="https://i.imghippo.com/files/BpAT9949uA.png" alt="building">
+        </div>
+      </div>
+      
     </div>
   </div>
 
@@ -574,9 +598,6 @@
       <div class="project-item" onclick="scrollToProject('bedroom')">
         <h4>Bedroom Deconstructed</h4>
       </div>
-      <div class="project-item" onclick="scrollToProject('misc painting')">
-        <h4>Illustrations</h4>
-      </div>
       <div class="project-item" onclick="scrollToProject('study-model')">
         <h4>Negative Iterations</h4>
       </div>
@@ -585,6 +606,16 @@
       <div class="project-item" onclick="scrollToProject('jewelry')">
         <h4>Jewelry Design</h4>
       </div>
+      
+      <h3 class="project-title">Playground</h3>
+      <div class="project-item" onclick="scrollToProject('blender')">
+        <h4>Blender</h4>
+      </div>
+      
+      <div class="project-item" onclick="scrollToProject('misc painting')">
+        <h4>Illustrations</h4>
+      </div>
+      
     </div>
   </div>
             
