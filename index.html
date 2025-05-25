@@ -3,6 +3,7 @@
 
 <head>
   <title>Siyu's Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://use.typekit.net/jvh5qmh.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
   <style>
@@ -232,7 +233,8 @@
     }
 
     .single-project-image img {
-      width: 1080px;
+      width: 100%;
+      max-width: 1080px;
       height: auto;
     }
 
@@ -246,7 +248,8 @@
     }
 
     .project-images-grid img {
-      width: 260px;
+      width: 100%;
+      max-width: 260px;
       height: auto;
       border-radius: 4px;
       display: block;
@@ -255,7 +258,8 @@
     }
     
     .project-images-grid video {
-      width: 260px;
+      width: 100%;
+      max-width: 260px;
       height: auto;
       border-radius: 4px;
       display: block;
@@ -264,26 +268,9 @@
     }
     
     .single-project-image video {
-      width: 1080px;
+      width: 100%;
+      max-width: 1080px;
       height: auto;
-    }
-
-    @media (max-width: 1200px) {
-      .project-images-grid {
-        column-count: 3;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .project-images-grid {
-        column-count: 2;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .project-images-grid {
-        column-count: 1;
-      }
     }
 
     .index-panel {
@@ -296,6 +283,7 @@
       transform: translateX(-100%);
       z-index: 40;
       padding: 40px;
+      overflow-y: auto;
     }
 
     .index-panel.open {
@@ -360,28 +348,256 @@
       }
     }
     
-     .services-arrow-lottie {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 55px;
-            height: 90px;
-            z-index: 100;
-        }
+    .services-arrow-lottie {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 55px;
+      height: 90px;
+      z-index: 100;
+    }
 
-        .services-hero-lottie {
-            position: absolute;
-            top: 50px;
-            right: 200px;
-            width: 500px;
-            height: 500px;
-            z-index: 10;
-        }
+    .services-hero-lottie {
+      position: absolute;
+      top: 50px;
+      right: 200px;
+      width: 500px;
+      height: 500px;
+      z-index: 10;
+    }
 
-        .services-arrow-lottie:hover {
-            opacity: 1;
-        }
+    .services-arrow-lottie:hover {
+      opacity: 1;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .project-images-grid {
+        column-count: 3;
+      }
+      
+      .services-hero-lottie {
+        right: 100px;
+        width: 400px;
+        height: 400px;
+      }
+      
+      h1 {
+        font-size: 8em;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .project-images-grid {
+        column-count: 2;
+      }
+      
+      .project-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .project-info {
+        position: static;
+        padding-right: 0;
+      }
+      
+      .content-wrapper {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+      
+      .name-title {
+        position: static;
+        text-align: left;
+        margin-bottom: 40px;
+      }
+      
+      .services-hero-lottie {
+        position: static;
+        width: 300px;
+        height: 300px;
+        margin: 20px auto;
+      }
+      
+      h1 {
+        font-size: 6em;
+      }
+      
+      .scrolling-text {
+        font-size: 80px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+      
+      nav {
+        bottom: 20px;
+        left: 20px;
+        gap: 15px;
+        padding: 8px 16px;
+      }
+      
+      .nav-button {
+        font-size: 0.9em;
+      }
+      
+      h1 {
+        font-size: 4.5em;
+      }
+      
+      .background-blob {
+        width: 400px;
+        height: 350px;
+        left: 50%;
+      }
+      
+      .my-work-image {
+        margin-top: 150px;
+        padding-bottom: 60px;
+      }
+      
+      .project-wrapper {
+        margin-bottom: 80px;
+      }
+      
+      .projects-container {
+        padding: 0 5px;
+      }
+      
+      .content-wrapper {
+        padding-top: 80px;
+        padding-bottom: 80px;
+      }
+      
+      .index-panel {
+        width: 280px;
+        padding: 30px;
+      }
+      
+      .scrolling-text {
+        font-size: 60px;
+      }
+      
+      .services-arrow-lottie {
+        bottom: 20px;
+        width: 45px;
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-images-grid {
+        column-count: 1;
+      }
+      
+      h1 {
+        font-size: 3.5em;
+      }
+      
+      p {
+        font-size: 1em;
+      }
+      
+      .project-title {
+        font-size: 1.3em;
+      }
+      
+      .background-blob {
+        width: 300px;
+        height: 250px;
+      }
+      
+      .scrolling-text {
+        font-size: 40px;
+      }
+      
+      .services-hero-lottie {
+        width: 200px;
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+      
+      nav {
+        bottom: 15px;
+        left: 15px;
+        gap: 10px;
+        padding: 6px 12px;
+        flex-wrap: wrap;
+      }
+      
+      .nav-button {
+        font-size: 0.8em;
+      }
+      
+      h1 {
+        font-size: 2.8em;
+      }
+      
+      .content-wrapper {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        gap: 15px;
+      }
+      
+      .my-work-image {
+        margin-top: 100px;
+        padding-bottom: 40px;
+      }
+      
+      .project-wrapper {
+        margin-bottom: 60px;
+      }
+      
+      .index-panel {
+        width: 250px;
+        padding: 20px;
+      }
+      
+      .scrolling-text {
+        font-size: 30px;
+      }
+      
+      .dot {
+        display: none; /* Hide custom cursor on very small screens */
+      }
+      
+      body {
+        cursor: auto; /* Restore default cursor on very small screens */
+      }
+    }
+
+    /* Very large screens */
+    @media (min-width: 1600px) {
+      .content-wrapper {
+        max-width: 1600px;
+      }
+      
+      .projects-container {
+        max-width: 1600px;
+      }
+      
+      h1 {
+        font-size: 12em;
+      }
+      
+      .services-hero-lottie {
+        width: 600px;
+        height: 600px;
+        right: 300px;
+      }
+    }
   </style>
 </head>
 
@@ -426,7 +642,7 @@
         <div class="project-info">
           <h3 class="project-title">Canopy Commons</h3>
           <p class="project-location">Rhino 3D, Illustrator, Photoshop, 2025</p>
-          <p class="project-description">This coworking space design transforms the traditional workplace into a living forest sanctuary. Standing columns mimic tree trunks while planted vegetation brings nature indoors. Glass panels as walls flood the interior with natural light, creating a space that breathes and evolves throughout the day.</p> <p class="project-description">Inspired by Ishigami’s celebrated Kanagawa Institute of Technology Workshop, the layout creates organic pathways between workstations while maintaining visual connection throughout the space. This arrangement fosters both collaboration and focus.</p> <p class="project-description"> In just a week, I designed this environment as a direct response to countless hours spent in poorly-lit, uninspiring libraries. This is a space that nurtures creativity through biophilic design principles and thoughtful spatial organization.</p>
+          <p class="project-description">This coworking space design transforms the traditional workplace into a living forest sanctuary. Standing columns mimic tree trunks while planted vegetation brings nature indoors. Glass panels as walls flood the interior with natural light, creating a space that breathes and evolves throughout the day.</p> <p class="project-description">Inspired by Ishigami's celebrated Kanagawa Institute of Technology Workshop, the layout creates organic pathways between workstations while maintaining visual connection throughout the space. This arrangement fosters both collaboration and focus.</p> <p class="project-description"> In just a week, I designed this environment as a direct response to countless hours spent in poorly-lit, uninspiring libraries. This is a space that nurtures creativity through biophilic design principles and thoughtful spatial organization.</p>
         </div>
         <div class="single-project-image">
           <img src="https://i.imghippo.com/files/DofH8190Ob.png" alt="canopy perspective">
@@ -440,7 +656,7 @@
         <div class="project-info">
           <h3 class="project-title">Shift: A Digital Memory</h3>
           <p class="project-location">Rhino 3D, Illustrator, Photoshop, 2025</p>
-          <p class="project-description">This detailed 3D recreation captures the previous Shift Creator Space clubhouse that stood before making way for urban development. Working entirely from memory, I’ve reconstructed the vibrant communal areas where creativity flourished for over 5 years.</p> <p class="project-description">Every detail, from the characteristic red chairs to the skateboard in the stairwell, represents authentic moments from the hundreds of hours I spent nurturing this creative community as a co-director.</p> <p class="project-description">I completed this memorial project over the course of a weekend, translating intangible memories into a tangible 3D model that honors the space where hundreds of student creators found their voice. It is both a personal tribute and a historical document, preserving the spatial identity of a place that shaped the creative journey of countless students in their college life.</p>
+          <p class="project-description">This detailed 3D recreation captures the previous Shift Creator Space clubhouse that stood before making way for urban development. Working entirely from memory, I've reconstructed the vibrant communal areas where creativity flourished for over 5 years.</p> <p class="project-description">Every detail, from the characteristic red chairs to the skateboard in the stairwell, represents authentic moments from the hundreds of hours I spent nurturing this creative community as a co-director.</p> <p class="project-description">I completed this memorial project over the course of a weekend, translating intangible memories into a tangible 3D model that honors the space where hundreds of student creators found their voice. It is both a personal tribute and a historical document, preserving the spatial identity of a place that shaped the creative journey of countless students in their college life.</p>
         </div>
         <div class="single-project-image">
           <img src="https://i.postimg.cc/MZr5MBZj/final.jpg" alt="old house">
@@ -452,7 +668,7 @@
         <div class="project-info">
           <h3 class="project-title">Shift Creator Space</h3>
           <p class="project-location">Graphic Design, Brand Identity, 2024-2025</p>
-          <p class="project-description">Shift Creator Space is a 50 people community of designers, hackers, entrepreneurs, and makers driven by the common mission to build dope stuff outside of the classroom. As Co-Director, my journey with this community has shaped both my design philosophy and understanding of creative transformation. </p> <p class="project-description"> Witnessing firsthand how this club elevates passionate students, I designed a brand identity that captures this metamorphic experience—from hesitant newcomers to confident creators. The vibrant color palette reflects the energy of our community. Each poster, social media template, and merchandise item I designed tells part of our collective story—whether it’s the late-night FISI jam sessions, the speakeasy open mics, or creator showcases.</p> <p class = "project-description"> I also developed a <button class="link-button" onclick="openShiftBrand()">Brand Identity Guideline</button> for Shift. 
+          <p class="project-description">Shift Creator Space is a 50 people community of designers, hackers, entrepreneurs, and makers driven by the common mission to build dope stuff outside of the classroom. As Co-Director, my journey with this community has shaped both my design philosophy and understanding of creative transformation. </p> <p class="project-description"> Witnessing firsthand how this club elevates passionate students, I designed a brand identity that captures this metamorphic experience—from hesitant newcomers to confident creators. The vibrant color palette reflects the energy of our community. Each poster, social media template, and merchandise item I designed tells part of our collective story—whether it's the late-night FISI jam sessions, the speakeasy open mics, or creator showcases.</p> <p class = "project-description"> I also developed a <button class="link-button" onclick="openShiftBrand()">Brand Identity Guideline</button> for Shift. 
         </div>
         <div class="project-images-grid">
           <img src="https://i.postimg.cc/8CBWm2gz/diag-poster.jpg" alt="Diag poster">
@@ -479,7 +695,7 @@
         <div class="project-info">
           <h3 class="project-title">Chromatic Memoirs</h3>
           <p class="project-location">Digital, 2022-2025</p>
-          <p class="project-description">This collection represents more than mere portraits–-it’s a living archive of the people who have shaped my journey. Through deliberate color choices and thoughtful lighting, I’ve sought to capture not just physical likenesses, but the essence of each individual’s spirit and emotional landscape.Each face tells a story that intertwines with my own.</p> <p class="project-description">Art has always been my most authentic form of documentation. Where words fail, these images speak volumes about connection, intimacy, and the beautiful complexity of human relationships that have defined my path.</p>
+          <p class="project-description">This collection represents more than mere portraits–-it's a living archive of the people who have shaped my journey. Through deliberate color choices and thoughtful lighting, I've sought to capture not just physical likenesses, but the essence of each individual's spirit and emotional landscape.Each face tells a story that intertwines with my own.</p> <p class="project-description">Art has always been my most authentic form of documentation. Where words fail, these images speak volumes about connection, intimacy, and the beautiful complexity of human relationships that have defined my path.</p>
         </div>
         <div class="project-images-grid">
           <img src="https://i.postimg.cc/5yvgmNMk/IMG-0813.jpg" alt="Dimi">
