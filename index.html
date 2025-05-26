@@ -1,19 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Siyu's Portfolio</title>
-  
-  <!-- Fonts -->
   <link rel="stylesheet" href="https://use.typekit.net/jvh5qmh.css">
-  
-  <!-- Lottie -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.7.14/lottie.min.js"></script>
-  
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="./css/styles.css">
+  <style>
+    @font-face {
+      font-family: "arboria", sans-serif;
+      font-weight: 300;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: "forma-djr-display", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+    }
+    
+    body {
+      cursor: none;
+      background-color: #FDFFFC;
+      margin: 0;
+      padding: 40px;
+      font-family: arboria, sans-serif;
+      overflow-x: hidden;
+    }
+
+    @keyframes moveBlob {
+      0% {
+        transform: translate(-50%, -50%) scale(1) skew(0deg, 0deg);
+      }
+
+      25% {
+        transform: translate(-50%, -50%) scale(1.2) skew(20deg, -10deg);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) scale(1.4) skew(20deg, -10deg);
+      }
+
+      75% {
+        transform: translate(-50%, -50%) scale(1.2) skew(30deg, 0deg);
+      }
+
+      100% {
+        transform: translate(-50%, -50%) scale(1) skew(0deg, 0deg);
+      }
+    }
+
+    .background-blob {
+      position: absolute;
+      top: 50%;
+      left: 70%;
+      width: 600px;
+      height: 550px;
+      background: radial-gradient(circle, #ba1919, transparent);
+      filter: blur(150px);
+      transform: translate(-50%, -50%);
+      animation: moveBlob 5s infinite ease-in-out;
+      z-index: -1;
+    }
+
+    nav {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
+      z-index: 100;
+      display: flex;
+      gap: 20px;
+      background-color: #FDFFFC;
+      padding: 10px 20px;
+      border-radius: 25px;
+    }
+
+    .nav-button,
+    .link-button {
+      font-size: 1em;
+      color: #0C120C;
+      font-family: arboria, sans-serif;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .link-button {
+      text-decoration: underline;
+    }
+
+    .nav-button::before,
+    .link-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 40px;
+      height: 40px;
+      background-color: #0C120C;
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .nav-button:hover,
+    .link-button:hover {
+      color: #C2C2C2;
+    }
+
+    .nav-button:hover::before,
+    .link-button:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .content-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 140px;
+      padding-bottom: 200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .text-column {
+      max-width: 600px;
+    }
+
+    .name-title {
+      position: absolute;
+      top: 40%;
+      right: 30px;
+      text-align: right;
+      z-index: 90;
+    }
+
+    .header-container {
+      perspective: 1000px;
+    }
+
+    h1 {
+      font-size: 10em;
+      color: #0C120C;
+      font-family: Forma DJR Display, sans-serif;
+      margin: 0;
+      line-height: 0.9;
+      transition: transform 0.1s;
+    }
+
+    p {
+      font-size: 1.05em;
+      font-family: arboria, sans-serif;
+      color: #0C120C;
+      margin: 0 0 30px 0;
+      line-height: 1.5;
+    }
+
+    .dot {
+      position: fixed;
+      width: 5px;
+      height: 5px;
+      background-color: #0C120C;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 200;
+      transform: translate(-50%, -50%);
+    }
+
+    /* my work */
+    .my-work-image {
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 100px;
+      padding-top: 0;
+      margin-top: 230px;
+    }
+
+    .my-work-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* project section */
+    .projects-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .project-wrapper {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      margin-bottom: 120px;
+    }
+
+    .project-info {
+      position: sticky;
+      top: 40px;
+      height: fit-content;
+      width: 100%;
+      padding-right: 20px;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+      margin: 0 0 0 0;
+      font-weight: bold;
+    }
+
+    .project-location {
+      color: #666;
+      margin: 0 0 20px 0;
+      font-size: 0.9em;
+    }
+
+    .project-description {
+      font-size: 0.9em;
+    }
+
+    .single-project-image img {
+      width: 1080px;
+      height: auto;
+    }
+
+    .project-images-grid {
+      column-count: 4;
+      column-gap: 16px;
+    }
+
+    .project-images-grid img:first-child {
+      grid-column: auto;
+    }
+
+    .project-images-grid img {
+      width: 260px;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+    
+    .project-images-grid video {
+      width: 260px;
+      height: auto;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 16px;
+      break-inside: avoid;
+    }
+    
+    .single-project-image video {
+      width: 1080px;
+      height: auto;
+    }
+
+    @media (max-width: 1200px) {
+      .project-images-grid {
+        column-count: 3;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .project-images-grid {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .project-images-grid {
+        column-count: 1;
+      }
+    }
+
+    .index-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 310px;
+      background-color: #fdfffc;
+      transform: translateX(-100%);
+      z-index: 40;
+      padding: 40px;
+    }
+
+    .index-panel.open {
+      transform: translateX(0);
+    }
+
+    .project-item {
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .project-item h4 {
+      font-size: 1em;
+      color: #0C120C;
+      font-family: arboria, sans-serif;
+      padding: 0;
+      cursor: pointer;
+      position: relative;
+      line-height: 0.7;
+      margin-left: 30px;
+    }
+
+    .index-panel h4 {
+      font-family: arboria, sans-serif;
+      color: #0C120C;
+      margin-top: 20px;
+    }
+
+    .project-item h4:hover {
+      text-decoration: underline;
+    }
+
+    .banner-container {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 130s linear infinite;
+      font-size: 110px;
+      font-family: arboria, sans-serif;
+    }
+
+    .scrolling-text-content {
+      display: inline-block;
+      padding-right: 0;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+     .services-arrow-lottie {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 55px;
+            height: 90px;
+            z-index: 100;
+        }
+
+        .services-hero-lottie {
+            position: absolute;
+            top: 50px;
+            right: 200px;
+            width: 500px;
+            height: 500px;
+            z-index: 10;
+        }
+
+        .services-arrow-lottie:hover {
+            opacity: 1;
+        }
+  </style>
 </head>
 
 <body>
@@ -42,8 +411,8 @@
     </div>
   </div>
   
-  <div class="services-arrow-lottie" data-w-id="2e93df24-f29a-e4d7-3bc9-f6ccc8324605" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63909085c2a607e8ca242ced_arrow%20purple.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2.033333333333333" data-duration="0">
-  </div>
+     <div class="services-arrow-lottie" data-w-id="2e93df24-f29a-e4d7-3bc9-f6ccc8324605" data-animation-type="lottie" data-src="https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63909085c2a607e8ca242ced_arrow%20purple.json" data-loop="1" data-direction="1" data-autoplay="1" data-is-ix2-target="0" data-renderer="svg" data-default-duration="2.033333333333333" data-duration="0">
+    </div>
   
   <div class="my-work-image">
     <img src="https://i.postimg.cc/pL5C95Xx/web.png" alt="my work image">
@@ -57,7 +426,7 @@
         <div class="project-info">
           <h3 class="project-title">Canopy Commons</h3>
           <p class="project-location">Rhino 3D, Illustrator, Photoshop, 2025</p>
-          <p class="project-description">This coworking space design transforms the traditional workplace into a living forest sanctuary. Standing columns mimic tree trunks while planted vegetation brings nature indoors. Glass panels as walls flood the interior with natural light, creating a space that breathes and evolves throughout the day.</p> <p class="project-description">Inspired by Ishigami's celebrated Kanagawa Institute of Technology Workshop, the layout creates organic pathways between workstations while maintaining visual connection throughout the space. This arrangement fosters both collaboration and focus.</p> <p class="project-description"> In just a week, I designed this environment as a direct response to countless hours spent in poorly-lit, uninspiring libraries. This is a space that nurtures creativity through biophilic design principles and thoughtful spatial organization.</p>
+          <p class="project-description">This coworking space design transforms the traditional workplace into a living forest sanctuary. Standing columns mimic tree trunks while planted vegetation brings nature indoors. Glass panels as walls flood the interior with natural light, creating a space that breathes and evolves throughout the day.</p> <p class="project-description">Inspired by Ishigami’s celebrated Kanagawa Institute of Technology Workshop, the layout creates organic pathways between workstations while maintaining visual connection throughout the space. This arrangement fosters both collaboration and focus.</p> <p class="project-description"> In just a week, I designed this environment as a direct response to countless hours spent in poorly-lit, uninspiring libraries. This is a space that nurtures creativity through biophilic design principles and thoughtful spatial organization.</p>
         </div>
         <div class="single-project-image">
           <img src="https://i.imghippo.com/files/DofH8190Ob.png" alt="canopy perspective">
@@ -71,7 +440,7 @@
         <div class="project-info">
           <h3 class="project-title">Shift: A Digital Memory</h3>
           <p class="project-location">Rhino 3D, Illustrator, Photoshop, 2025</p>
-          <p class="project-description">This detailed 3D recreation captures the previous Shift Creator Space clubhouse that stood before making way for urban development. Working entirely from memory, I've reconstructed the vibrant communal areas where creativity flourished for over 5 years.</p> <p class="project-description">Every detail, from the characteristic red chairs to the skateboard in the stairwell, represents authentic moments from the hundreds of hours I spent nurturing this creative community as a co-director.</p> <p class="project-description">I completed this memorial project over the course of a weekend, translating intangible memories into a tangible 3D model that honors the space where hundreds of student creators found their voice. It is both a personal tribute and a historical document, preserving the spatial identity of a place that shaped the creative journey of countless students in their college life.</p>
+          <p class="project-description">This detailed 3D recreation captures the previous Shift Creator Space clubhouse that stood before making way for urban development. Working entirely from memory, I’ve reconstructed the vibrant communal areas where creativity flourished for over 5 years.</p> <p class="project-description">Every detail, from the characteristic red chairs to the skateboard in the stairwell, represents authentic moments from the hundreds of hours I spent nurturing this creative community as a co-director.</p> <p class="project-description">I completed this memorial project over the course of a weekend, translating intangible memories into a tangible 3D model that honors the space where hundreds of student creators found their voice. It is both a personal tribute and a historical document, preserving the spatial identity of a place that shaped the creative journey of countless students in their college life.</p>
         </div>
         <div class="single-project-image">
           <img src="https://i.postimg.cc/MZr5MBZj/final.jpg" alt="old house">
@@ -83,7 +452,7 @@
         <div class="project-info">
           <h3 class="project-title">Shift Creator Space</h3>
           <p class="project-location">Graphic Design, Brand Identity, 2024-2025</p>
-          <p class="project-description">Shift Creator Space is a 50 people community of designers, hackers, entrepreneurs, and makers driven by the common mission to build dope stuff outside of the classroom. As Co-Director, my journey with this community has shaped both my design philosophy and understanding of creative transformation. </p> <p class="project-description"> Witnessing firsthand how this club elevates passionate students, I designed a brand identity that captures this metamorphic experience—from hesitant newcomers to confident creators. The vibrant color palette reflects the energy of our community. Each poster, social media template, and merchandise item I designed tells part of our collective story—whether it's the late-night FISI jam sessions, the speakeasy open mics, or creator showcases.</p> <p class = "project-description"> I also developed a <button class="link-button" onclick="openShiftBrand()">Brand Identity Guideline</button> for Shift. 
+          <p class="project-description">Shift Creator Space is a 50 people community of designers, hackers, entrepreneurs, and makers driven by the common mission to build dope stuff outside of the classroom. As Co-Director, my journey with this community has shaped both my design philosophy and understanding of creative transformation. </p> <p class="project-description"> Witnessing firsthand how this club elevates passionate students, I designed a brand identity that captures this metamorphic experience—from hesitant newcomers to confident creators. The vibrant color palette reflects the energy of our community. Each poster, social media template, and merchandise item I designed tells part of our collective story—whether it’s the late-night FISI jam sessions, the speakeasy open mics, or creator showcases.</p> <p class = "project-description"> I also developed a <button class="link-button" onclick="openShiftBrand()">Brand Identity Guideline</button> for Shift. 
         </div>
         <div class="project-images-grid">
           <img src="https://i.postimg.cc/8CBWm2gz/diag-poster.jpg" alt="Diag poster">
@@ -110,7 +479,7 @@
         <div class="project-info">
           <h3 class="project-title">Chromatic Memoirs</h3>
           <p class="project-location">Digital, 2022-2025</p>
-          <p class="project-description">This collection represents more than mere portraits–-it's a living archive of the people who have shaped my journey. Through deliberate color choices and thoughtful lighting, I've sought to capture not just physical likenesses, but the essence of each individual's spirit and emotional landscape.Each face tells a story that intertwines with my own.</p> <p class="project-description">Art has always been my most authentic form of documentation. Where words fail, these images speak volumes about connection, intimacy, and the beautiful complexity of human relationships that have defined my path.</p>
+          <p class="project-description">This collection represents more than mere portraits–-it’s a living archive of the people who have shaped my journey. Through deliberate color choices and thoughtful lighting, I’ve sought to capture not just physical likenesses, but the essence of each individual’s spirit and emotional landscape.Each face tells a story that intertwines with my own.</p> <p class="project-description">Art has always been my most authentic form of documentation. Where words fail, these images speak volumes about connection, intimacy, and the beautiful complexity of human relationships that have defined my path.</p>
         </div>
         <div class="project-images-grid">
           <img src="https://i.postimg.cc/5yvgmNMk/IMG-0813.jpg" alt="Dimi">
@@ -126,16 +495,16 @@
         </div>
       </div>
 
-      <!-- Project 7 -->
+            <!-- Project 7 -->
       <div id="bedroom" class="project-wrapper">
         <div class="project-info">
           <h3 class="project-title">Bedroom Deconstructed</h3>
           <p class="project-location">Rhinocero, Illustrator, 2024</p>
           <p class="project-description">This project explores the analytical power of architectural drawing techniques applied to personal space. Working methodically over four weeks, I documented every architectural element and personal artifact, creating a series that bridges technical drafting with intimate spatial storytelling. I used different projection techniques to uncover distinct spatial truths about the same environment. This exercise sharpened my technical skills while developing a deeper appreciation for how drawing conventions shape our understanding of space.</p>
         </div>
-        <div class="single-project-image">
-          <img src="https://i.imghippo.com/files/CdkB5130oQ.png" alt="old house">
-        </div>
+          <div class="single-project-image">
+            <img src="https://i.imghippo.com/files/CdkB5130oQ.png" alt="old house">
+          </div>
       </div>
       
       <!-- Project 4 -->
@@ -176,19 +545,19 @@
         </div>
       </div>
       
-      <!-- Project 8 -->
+                  <!-- Project 8 -->
       <div id="blender" class="project-wrapper">
         <div class="project-info">
           <h3 class="project-title">Blender</h3>
           <p class="project-location">Blender, 2025</p>
           <p class="project-description">I am teaching myself blender at the moment. Check back later to see more progress...hopefully.</p>
         </div>
-        <div class="single-project-image">
-          <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1082703579?h=5c5ee21d1d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="donut"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-        </div>
+          <div class="single-project-image">
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1082703579?h=5c5ee21d1d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="donut"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+          </div>
       </div>
       
-      <!-- Project 9 -->
+                 <!-- Project 2 -->
       <div id="misc painting" class="project-wrapper">
         <div class="project-info">
           <h3 class="project-title">Illustrations</h3>
@@ -265,8 +634,132 @@
     </div>
   </div>
 
-  <!-- Custom JavaScript -->
-  <script src="./js/script.js"></script>
+  <script>
+    function openBento() {
+      window.open('https://bento.me/siyuge', '_blank');
+    }
+
+    function openResume() {
+      window.open('https://drive.google.com/file/d/1tQCro1kNr5WpdjznQuV_uc7oUeFMbZm4/view?usp=sharing', '_blank');
+    }
+
+    function openShiftCreator() {
+      window.open('https://shiftcreator.space', '_blank');
+    }
+
+    function openProMo() {
+      window.open('https://www.instagram.com/product.motion?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==', 'blank');
+    }
+
+    function openATD() {
+      window.open('https://alphathetadeltaumich.org/', '_blank');
+    }
+    
+    function openRoots() {
+      window.open('https://www.rootsapp.org/', '_blank');
+    }
+    
+    function openCSS() {
+      window.open('https://lsa.umich.edu/social-solutions', '_blank');
+    }
+    
+    function openShiftBrand(){
+      window.open('https://drive.google.com/file/d/1vynp9f_Jv0CBA5Il71hTPoxmoxte2Ns9/view?usp=sharing', '_blank');
+    }
+    
+    const header = document.querySelector('h1');
+    const headerContainer = document.querySelector('.header-container');
+    let rect = headerContainer.getBoundingClientRect();
+    
+    headerContainer.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const percentX = (mouseX - centerX) / centerX;
+      const percentY = (mouseY - centerY) / centerY;
+      const twistX = percentY * 20;
+      const twistY = percentX * 20;
+      header.style.transform = `rotateX(${-twistX}deg) rotateY(${twistY}deg)`;
+    });
+    
+    headerContainer.addEventListener('mouseleave', () => {
+      header.style.transform = 'none';
+    });
+    
+    window.addEventListener('resize', () => {
+      rect = headerContainer.getBoundingClientRect();
+    });
+    
+    const dot = document.getElementById('dot');
+    document.addEventListener('mousemove', (e) => {
+      dot.style.left = `${e.clientX}px`;
+      dot.style.top = `${e.clientY}px`;
+    });
+    
+    const toggleIndexPanel = () => {
+      const panel = document.getElementById('indexPanel');
+      panel.classList.toggle('open');
+    };
+    
+    const scrollToProject = (id) => {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({
+          behavior: 'smooth'
+        });
+        toggleIndexPanel();
+      }
+    };
+    
+    document.addEventListener('DOMContentLoaded', () => {
+            const heroLottieElement = document.querySelector('.services-hero-lottie');
+            const heroAnimation = lottie.loadAnimation({
+                container: heroLottieElement,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63b6fa2b52a5b1508ff0c52f_big%20purple%20stars2.json'
+            });
+
+            // Modify the color of stars to yellow after animation loads
+            heroAnimation.addEventListener('DOMLoaded', () => {
+                const svgElement = heroLottieElement.querySelector('svg');
+                if (svgElement) {
+                    const paths = svgElement.querySelectorAll('path');
+                    paths.forEach(path => {
+                        // Change stroke color to yellow
+                        path.setAttribute('stroke', '#f3a5a5');
+                        
+                        // If there's a fill color (like the star), change it to yellow
+                        if (path.getAttribute('fill')) {
+                            path.setAttribute('fill', '#f3a5a5');
+                        }
+                    });
+                }
+            });
+
+            const arrowElement = document.querySelector('.services-arrow-lottie');
+            const animation = lottie.loadAnimation({
+                container: arrowElement,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: 'https://cdn.prod.website-files.com/6285e77eaf03d3b5e63ee110/63909085c2a607e8ca242ced_arrow%20purple.json'
+            });
+
+            // Modify the color after animation loads
+            animation.addEventListener('DOMLoaded', () => {
+                const svgElement = arrowElement.querySelector('svg');
+                if (svgElement) {
+                    const paths = svgElement.querySelectorAll('path');
+                    paths.forEach(path => {
+                        path.setAttribute('stroke', '#f3a5a5');
+                    });
+                }
+            });
+        });   
+  </script>
 </body>
 
 </html>
